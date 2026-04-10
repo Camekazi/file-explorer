@@ -1331,13 +1331,9 @@ app.get("*", async (c) => {
 });
 
 const port = parseInt(process.env.PORT || "3456");
-console.log(`🗂️  File Explorer running at http://localhost:${port}`);
-console.log(`📁 Browsing: ${ROOT_DIR}`);
-
 const hostname = process.env.BIND_HOST || "0.0.0.0";
 
-export default {
-  port,
-  hostname,
-  fetch: app.fetch,
-};
+Bun.serve({ port, hostname, fetch: app.fetch });
+
+console.log(`🗂️  File Explorer running at http://localhost:${port}`);
+console.log(`📁 Browsing: ${ROOT_DIR}`);
